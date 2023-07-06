@@ -12,7 +12,7 @@ class LinearRegression:
     def fit(self, X, y):
         self.X = X
         self.y = y
-        self.n = self.X.shape[0]
+        self.n = np.size(self.X)
         
         self.coef_ = self._set_coef()
         self.intercept_ = self._set_intercept()
