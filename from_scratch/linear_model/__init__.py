@@ -30,4 +30,4 @@ class LinearRegression:
         return beta
 
     def predict(self, X):
-        return (self.coef_*X) + self.intercept_
+        return (self.coef_*X) + self.intercept
