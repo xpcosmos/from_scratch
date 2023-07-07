@@ -30,3 +30,6 @@ class LinearRegression:
         
     def predict(self, X):
         return (self.coef_*X) + self.intercept
+    
+    def score(X, y):
+        pass
