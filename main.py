@@ -9,8 +9,7 @@ X_test = X + np.random.random(np.size(X))
 
 model = LinearRegression()
 beta = model.fit(X,y)
-print(beta)
-print(model.coef_)
+print(beta.coef_)
 
 print('X de teste:')
 print(X_test)

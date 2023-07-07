@@ -26,8 +26,7 @@ class LinearRegression:
         
         self.intercept = beta[0]
         self.coef_ = beta[1]
+        return self
         
-        return beta
-
     def predict(self, X):
         return (self.coef_*X) + self.intercept
