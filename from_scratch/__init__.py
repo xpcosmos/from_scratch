@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Arquivo __init__.py
 
 # Definição de atributos especiais
