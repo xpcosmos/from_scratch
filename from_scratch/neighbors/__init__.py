@@ -1,1 +1,1 @@
-from ._knneighbors import KNNeighbors
+from ._kneighborsClassifier import KNNeighbors
