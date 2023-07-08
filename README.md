@@ -23,6 +23,7 @@ Aqui estão alguns dos modelos que serão desenvolvidos durante o projeto "From 
 
 * Regressão Linear
 * Árvores de Decisão
+* KNN 
 * K-means
 * Redes Neurais Artificiais
 * Support Vector Machines (SVM)
