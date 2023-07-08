@@ -31,5 +31,17 @@ class LinearRegression:
     def predict(self, X):
         return (self.coef_*X) + self.intercept
     
-    def score(X, y):
-        pass
+    def score(self, X, y):
+        m_x = np.mean(X)
+        m_y = np.mean(y)
+        S_xy = 0
+        S_xx = 0
+        S_yy = 0 
+        
+        for i in range(0, np.size(X)):
+            S_xy = S_xy + (X[i] - m_x) * (y[i] - m_y)
+            S_xx = S_xx + (X[i] - m_x) ** 2
+            S_yy = S_yy + (y[i] - m_y) ** 2
+            
+        R2 = (S_xy ** 2)/(S_xx * S_yy)
+        return R2

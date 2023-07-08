@@ -9,3 +9,5 @@ X_test = X + np.random.random(np.size(X))
 
 model = LinearRegression().fit(X,y)
 
+print(model.predict(X_test))
+print(model.score(X,y))
