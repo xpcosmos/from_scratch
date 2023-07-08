@@ -6,4 +6,8 @@ class KNeighborsClassifier:
         self.normalize = normalize # MinMaxScaler, StandardScaler
         self.encoding = encoding  # OneHotEncoder, OrdinalEncoder
     
+    def fit(self, X, y):
+        pass
     
+    def predict(self, X):
+        pass
