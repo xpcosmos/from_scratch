@@ -10,4 +10,8 @@ class KNeighborsClassifier:
         pass
     
     def predict(self, X):
+        predicted_label = [self._predict(x) for x in X]
+        return np.array(predicted_label)
+
+    def _predict(self, x):
         pass
