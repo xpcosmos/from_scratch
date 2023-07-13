@@ -16,4 +16,5 @@ class StandardScaler:
                 
             
     def _transform(self, x, X_main):
-        x = (x - np.mean(X_main) ) / np.std(X_main)
+        x = ((x - np.mean(X_main)) / np.std(X_main))
+        return x
