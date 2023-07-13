@@ -6,21 +6,19 @@ import numpy as np
 from from_scratch.preprocessing import StandardScaler
 
 
-
-X = np.ones((10, 5)) * np.random.randint(0, 1_000, size = (10,5))
-print('------------- X ----------------')
-print('X-Médio:\t', np.mean(X))
-print('Desvio padrão:\t', np.std(X))
-print(X)
-
-
 scaler = StandardScaler()
-X_transformed = scaler.fit_transform(X)
 
-print('------- X-Transformed ----------')
+X_train = np.ones((10, 5)) * np.random.randint(0, 1_000, size = (10,5))
+X_transformed = scaler.fit_transform(X_train)
+X_inverse = scaler.invert(X_transformed)
+
+print('===================================')
+print('---------------- X ----------------\n')
+print(X_train)
+print('===================================')
+print('--------- X-Transformed -----------\n')
 print(X_transformed)
-
-X_inverse = scaler.invert(X)
-
-print('------- X-inverse ----------')
+print('===================================')
+print('----------- X-inverse -------------\n')
 print(X_inverse)
+print('===================================')
