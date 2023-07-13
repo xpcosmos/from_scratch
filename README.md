@@ -28,6 +28,15 @@ Aqui estão alguns dos modelos que serão desenvolvidos durante o projeto "From 
 * Redes Neurais Artificiais
 * Support Vector Machines (SVM)
 * Naive Bayes
+
+Além dos modelos mencionados anteriormente, o projeto também abordará funcionalidades relacionadas ao pré-processamento de dados. O pré-processamento é uma etapa crucial na construção de modelos de aprendizado de máquina, pois envolve a preparação adequada dos dados antes de alimentá-los aos modelos.
+
+Algumas das funcionalidades serão implementadas incluem:
+
+* MinMaxScaler
+* StandardScaler
+[À definir]
+
 # Contribuição
 
 Se você tiver interesse em contribuir com o projeto "From Scratch", fique à vontade para entrar em contato. Toda contribuição é bem-vinda, desde sugestões de modelos adicionais até melhorias no código existente. Juntos, podemos expandir e aprimorar este projeto!
