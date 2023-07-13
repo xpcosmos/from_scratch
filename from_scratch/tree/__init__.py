@@ -1,1 +1,1 @@
-from from_scratch.tree import _decisiontreeclassifier
+from from_scratch.tree._decisiontreeclassifier import DecisionTreeClassifier
