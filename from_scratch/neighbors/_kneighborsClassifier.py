@@ -6,10 +6,9 @@ def _distancia_euclidiana(x1, x2):
         return distancia
 
 class KNeighborsClassifier:
-    def __init__(self, K=3, normalize = False, encoding = None):
+    def __init__(self, K=3):
         self.K = K
-        self.normalize = normalize # MinMaxScaler, StandardScaler
-        self.encoding = encoding  # OneHotEncoder, OrdinalEncoder
+
     
     def fit(self, X, y):
         self.X = X
