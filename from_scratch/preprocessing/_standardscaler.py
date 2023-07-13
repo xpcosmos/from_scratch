@@ -9,10 +9,9 @@ class StandardScaler:
         X_to_transform = X.T
         
         for i in range(0, X_to_transform.shape[0]):
-        
-            for j in X_to_transform[i]:
-                row = [self._transform(v, X_to_transform[i]) for v in X_to_transform[i]]
-        
+            row = [self._transform(v, X_to_transform[i]) for v in X_to_transform[i]]
+            self.x_meanxs.append(np.mean(X_to_transform[i]))
+            self.x_stdxs.append(np.std(X_to_transform[i]))
             X_to_transform[i] = row
         return X_to_transform.T
                 
@@ -21,27 +20,20 @@ class StandardScaler:
         x_mean = np.mean(X_main)
         x_std = np.std(X_main)
         
-        self.x_meanxs.append(x_mean)
-        self.x_stdxs.append(x_std)
-        
-        x = (x - x_mean) / x_std)
+        x = (x - x_mean) / x_std
         return x
     
     def invert(self, X):
+
         
         X_to_invert = X.T
         
         for i in range(0, X_to_invert.shape[0]):
-            for j in X_to_invert[i]:
-                row = [self._transform(v, X_to_invert[i]) for v in X_to_invert[i]]
-        
+            row = [self._invert_x(v, self.x_meanxs[i], self.x_stdxs[i]) for v in X_to_invert[i]]
             X_to_invert[i] = row
         return X_to_invert.T
                 
-    def invert(self, x, X_main):
-
-        self.x_meanxs.append(x_mean)
-        self.x_stdxs.append(x_std)
-        
-       # x = (x - x_mean) / x_std)
-        return x
+                
+    def _invert_x(self, x, xs_mean, xs_std):
+        x_inverso = (x*xs_std) + xs_mean
+        return x_inverso

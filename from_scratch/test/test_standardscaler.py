@@ -19,3 +19,8 @@ X_transformed = scaler.fit_transform(X)
 
 print('------- X-Transformed ----------')
 print(X_transformed)
+
+X_inverse = scaler.invert(X)
+
+print('------- X-inverse ----------')
+print(X_inverse)
