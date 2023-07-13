@@ -43,8 +43,6 @@ Algumas das funcionalidades serão implementadas incluem:
 
 * MinMaxScaler ✅ 
 * StandardScaler ✅
-[À definir]
-
 # Contribuição
 
 Se você tiver interesse em contribuir com o projeto "From Scratch", fique à vontade para entrar em contato. Toda contribuição é bem-vinda, desde sugestões de modelos adicionais até melhorias no código existente. Juntos, podemos expandir e aprimorar este projeto!
