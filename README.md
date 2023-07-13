@@ -4,6 +4,14 @@
 
 O projeto "From Scratch" tem como objetivo principal aprimorar minhas habilidades práticas e teóricas em modelos de aprendizado de máquina e modelos estatísticos. Neste projeto, irei selecionar alguns modelos amplamente conhecidos e o desafio proposto será o desenvolvimento desses modelos a partir do zero, sem o uso de bibliotecas prontas.
 
+## Requisitos
+
+| Requisito     | Versão |
+|---------------|--------|
+| Numpy         | 1.25.1 |
+| Pandas        | 2.0.3  |
+
+
 ## Motivação
 
 A motivação por trás deste projeto é a busca por um entendimento mais profundo dos algoritmos de aprendizado de máquina e modelos estatísticos. Ao desenvolver esses modelos a partir do zero, poderei explorar os detalhes e a lógica por trás de cada algoritmo, aprimorando minha compreensão e habilidades práticas nessa área.
