@@ -19,7 +19,7 @@ Os principais objetivos do projeto "From Scratch" são:
 * Consolidar o conhecimento prático por meio da implementação de modelos reais, enfrentando desafios e encontrando soluções.
 * Modelos Selecionados
 
-Aqui estão alguns dos modelos que serão desenvolvidos durante o projeto "From Scratch":
+Aqui estão alguns dos modelos que serão desenvolvidos durante o projeto:
 
 * Regressão Linear
 * Árvores de Decisão
