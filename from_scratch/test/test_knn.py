@@ -3,7 +3,7 @@ import sys
 sys.path.append(r'.')
 
 from from_scratch.neighbors import KNeighborsClassifier
-from from_scratch.datasets.wine import wine_dataset
+from from_scratch.datasets._wine import wine_dataset
 
 X = wine_dataset().X
 y = wine_dataset().y
