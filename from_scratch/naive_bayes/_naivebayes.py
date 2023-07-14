@@ -45,7 +45,26 @@ class CategoricalNB:
     
     
     def predict(self, X):
-        pass
+        # Tem como simplificar para caralho
+        prob_4_array = []
+        temp_list = {}
+
+        for option in options.keys():
+            a = 0
+            for array in numpy_df[:14,:-1]:
+                a+=1
+                temp_array = np.array([1])
+                for value, prob in zip(array, range(0, len(probs))):
+                    index = np.where(options[option][prob][0] == value)
+                    percent = options[option][prob][1, index]
+                    if not percent.size != 0:
+                        percent = 0
+                    temp_array = np.vstack([temp_array, percent])
+                    
+                prob_4_array.append(temp_array[1:])
+            temp_list[option] = prob_4_array
+
+        temp_list
     
     def isnumpy(self, obj):
         return isinstance(obj, np.ndarray)
