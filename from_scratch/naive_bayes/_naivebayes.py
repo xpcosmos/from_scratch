@@ -7,6 +7,11 @@ class CategoricalNB:
     
     def fit(self, X, y):
         
+        y_key, count = np.unique(ytrain, return_counts=True) 
+        percent = count / numpy_df.shape[0]
+        np.asarray((y_key, percent))[1]
+
+
         probs = list()
         options = {}
         for option in y_key:
