@@ -35,7 +35,7 @@ Aqui estão alguns dos modelos que serão desenvolvidos durante o projeto:
 * K-means ❌
 * Redes Neurais Artificiais ❌
 * Support Vector Machines (SVM) ❌
-* Naive Bayes ❌
+* Naive Bayes ✅
 
 Além dos modelos mencionados anteriormente, o projeto também abordará funcionalidades relacionadas ao pré-processamento de dados. O pré-processamento é uma etapa crucial na construção de modelos de aprendizado de máquina, pois envolve a preparação adequada dos dados antes de alimentá-los aos modelos.
 
