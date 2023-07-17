@@ -6,18 +6,14 @@ class CategoricalNB:
         pass
     
     def fit(self, X, y):      
-        
         self.y_keys = self._get_percent_unique(y)
         self.__options = {}
         
         for key in self.y_keys[0]:
             self.__options[key] = self._get_probs(X, y, key)
-        
-        
+            
         return self
-    
-
-    
+        
     def predict(self, X):
         predictions = dict()
         # Tem como simplificar para caralho
@@ -28,6 +24,7 @@ class CategoricalNB:
     
     
     # Funções auxiliares 
+     
     def _is_percent_zero(self,percent):
         if percent.size == 0:
             return 0
@@ -40,14 +37,11 @@ class CategoricalNB:
         percent = count / _obj.shape[0]
         return np.asarray((key, percent))
     
-    
     def _to_numpy(self, obj):
         if not isinstance(obj, np.ndarray):
             obj =  np.array(obj)
         return obj
-    # Extraindo Probabilidades para cada variável do conjunto de dados original
-    # Parâmetros: (Chave, Array X, Array com probabilidades únicas
-    #             Array com probabilidades)
+
     def _predict(self, key, X, array_prob):
         prediction = []
         for array in X:
@@ -69,4 +63,7 @@ class CategoricalNB:
             key_and_probability = self._get_percent_unique(array_temp[:,i])
             probs.append(key_and_probability)
         return probs
+    
+    def _set_class_predicted(self, prediction):
+        pass
     
