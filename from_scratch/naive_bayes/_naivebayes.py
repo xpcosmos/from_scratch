@@ -7,63 +7,24 @@ class CategoricalNB:
     
     def fit(self, X, y):
         
-        y_key = self._get_percent_unique(self, y)
-
-
-        self.probs = list()
+        y_keys = self._get_percent_unique(y)
         self.options = {}
-        for key in y_key[0]:
-            array_temp = X[np.where(X[:,-1] == key)]
-            for i in range(0, array_temp.shape[1]):
-                X_prob = self._get_percent_unique(X[:,i])
-                self.probs.append(X_prob)
-            self.options[key] = self.probs
         
+        for key in y_keys[0]:
+            self.options[key] = self._get_percent_unique(X, key)
         
         prob_4_array = []
         dict_probs = {}
 
         
-        for option in y_key[0]:
+        for option in y_keys[0]:
             for array in X:
-                prob_x_key = self._get_prob_ranks(option, array, self.probs, self.options)
-                prob_4_array.append(prob_x_key)
+                prob_4_array.append(self._get_prob_ranks(option, array, self.probs, self.options))
             dict_probs[option] = prob_4_array
 
         return self
     
-    def _get_prob_ranks(self, key, array, array_prob, array_with_options):
-        temp_array = np.array([1])
-        for value, prob in zip(array, range(0, len(array_prob))):
-            index = np.where(array_with_options[key][prob][0] == value)
-            percent = self.is_percent_zero(self.options[key][prob][1, index])
-        return np.vstack([temp_array, percent])[1:]
 
-    
-    def is_percent_zero(percent):
-        if percent.size == 0:
-            return 0
-        else: 
-            return percent
-        
-    def _get_percent_unique(self, X):
-        key, count = np.unique(X, return_counts=True) 
-        percent = count / X.shape[0]
-        return  np.asarray((key, percent))
-    
-    def _get_probs_X(self, X, y_key):
-        self.probs = list()
-        self.options = {}
-        
-        for key in y_key:
-            array_temp = X[np.where(X[:,-1] == y_key[1])]
-            for i in range(0, array_temp.shape[1]):
-                key, count = np.unique(array_temp[:,i], return_counts=True) 
-                percent = count / array_temp.shape[0]
-                count = np.asarray((key, percent))
-                self.probs.append(count)
-            self.options[key] = self.probs
-        self.options
     
     def predict(self, X):
         # Tem como simplificar para caralho
@@ -87,5 +48,37 @@ class CategoricalNB:
 
         temp_list
     
+    
+    # Funções auxiliares 
+    def _is_percent_zero(percent):
+        if percent.size == 0:
+            return 0
+        else: 
+            return percent
+        
+    def _get_percent_unique(X):
+        key, count = np.unique(X, return_counts=True) 
+        percent = count / X.shape[0]
+        return  np.asarray((key, percent))
+    
     def isnumpy(self, obj):
         return isinstance(obj, np.ndarray)
+    
+    def _get_prob_ranks(self, key, array, array_prob, array_with_options):
+        temp_array = np.array([1])
+        for value, prob in zip(array, range(0, len(array_prob))):
+            index = np.where(array_with_options[key][prob][0] == value)
+            percent = self._is_percent_zero(array_with_options[key][prob][1, index])
+        return np.vstack([temp_array, percent])[1:]
+
+    
+
+    def _get_probs_X(self, _obj, key):
+        probs = list()
+        array_temp = _obj[np.where(_obj[:,-1] == key)]
+        for i in range(0, array_temp.shape[1]):
+            _key, _count = np.unique(array_temp[:,i], return_counts=True) 
+            _percent = _count / array_temp.shape[0]
+            key_and_probability = np.asarray((_key, _percent))
+            probs.append(key_and_probability)
+        return probs
