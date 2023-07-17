@@ -6,11 +6,11 @@ class CategoricalNB:
         pass
     
     def fit(self, X, y):      
-        print(X)
-        y_keys = self._get_percent_unique(y)
+        
+        self.y_keys = self._get_percent_unique(y)
         self.__options = {}
         
-        for key in y_keys[0]:
+        for key in self.y_keys[0]:
             self.__options[key] = self._get_probs(X, y, key)
         
         
@@ -23,6 +23,7 @@ class CategoricalNB:
         # Tem como simplificar para caralho
         for key in self.__options.keys():
             predictions[key] = self._predict(key, X, self.__options)
+        
         return predictions
     
     
@@ -56,8 +57,9 @@ class CategoricalNB:
                 index = np.where(array_prob[key][prob][0] == value)
                 
                 percent = self._is_percent_zero(array_prob[key][prob][1, index])
-                predicted = np.vstack([predicted, percent])
-            prediction.append(predicted[1:])
+                predicted = np.vstack([predicted, percent]) 
+            predicted = np.prod(predicted) * self.y_keys[1, np.where(self.y_keys[0] == key)]
+            prediction.append(predicted)
         return prediction
 
     def _get_probs(self, X_to_prob, y_prob, _key):
@@ -67,3 +69,4 @@ class CategoricalNB:
             key_and_probability = self._get_percent_unique(array_temp[:,i])
             probs.append(key_and_probability)
         return probs
+    
