@@ -11,42 +11,17 @@ class CategoricalNB:
         self.options = {}
         
         for key in y_keys[0]:
-            self.options[key] = self._get_percent_unique(X, key)
+            self.__options[key] = self._get_probs(X, key)
         
-        prob_4_array = []
-        dict_probs = {}
-
-        
-        for option in y_keys[0]:
-            for array in X:
-                prob_4_array.append(self._get_prob_ranks(option, array, self.probs, self.options))
-            dict_probs[option] = prob_4_array
-
         return self
     
 
     
     def predict(self, X):
         # Tem como simplificar para caralho
-        prob_4_array = []
-        temp_list = {}
-
-        for option in options.keys():
-            a = 0
-            for array in numpy_df[:14,:-1]:
-                a+=1
-                temp_array = np.array([1])
-                for value, prob in zip(array, range(0, len(probs))):
-                    index = np.where(options[option][prob][0] == value)
-                    percent = options[option][prob][1, index]
-                    if not percent.size != 0:
-                        percent = 0
-                    temp_array = np.vstack([temp_array, percent])
-                    
-                prob_4_array.append(temp_array[1:])
-            temp_list[option] = prob_4_array
-
-        temp_list
+        for key in self.__options.keys():
+            predictions[key] = self._predict(key, X, self.__options)
+        return predictions
     
     
     # Funções auxiliares 
@@ -64,16 +39,23 @@ class CategoricalNB:
     def isnumpy(self, obj):
         return isinstance(obj, np.ndarray)
     
-    def _get_prob_ranks(self, key, array, array_prob, array_with_options):
-        temp_array = np.array([1])
-        for value, prob in zip(array, range(0, len(array_prob))):
-            index = np.where(array_with_options[key][prob][0] == value)
-            percent = self._is_percent_zero(array_with_options[key][prob][1, index])
-        return np.vstack([temp_array, percent])[1:]
+    # Extraindo Probabilidades para cada variável do conjunto de dados original
+    # Parâmetros: (Chave, Array X, Array com probabilidades únicas
+    #             Array com probabilidades)
+    def _predict(self, key, X, array_prob):
+        prediction = []
+        for array in X:
+            predicted = np.array([1])
+            for value, prob in zip(array, range(0, array_prob[key].size)):
+                index = np.where(array_prob[key][prob][0] == value)
+                percent = self._is_percent_zero(array_prob[key][prob][1, index])
+                predicted = np.vstack([predicted, percent])[1:]
+            prediction.append(predicted)
+        return prediction
 
     
 
-    def _get_probs_X(self, _obj, key):
+    def _get_probs(self, _obj, key):
         probs = list()
         array_temp = _obj[np.where(_obj[:,-1] == key)]
         for i in range(0, array_temp.shape[1]):
@@ -81,4 +63,6 @@ class CategoricalNB:
             _percent = _count / array_temp.shape[0]
             key_and_probability = np.asarray((_key, _percent))
             probs.append(key_and_probability)
+
+        
         return probs
