@@ -1,18 +1,26 @@
 import pandas as pd
+import numpy as np
+
 
 class adults_dataset:
     
-    @property
-    def X_train(self):
-        return pd.read_csv('from_scratch/datasets/data/adults/X_train.csv')
     
-    @property
-    def y_train(self):
-        return pd.read_csv('from_scratch/datasets/data/adults/y_train.csv')
-    @property
-    def X_test(self):
-        return pd.read_csv('from_scratch/datasets/data/adults/X_test.csv')
-    @property
-    def y_test(self):
-        return pd.read_csv('from_scratch/datasets/data/adults/y_test.csv')
+    def X_train():
+        df = pd.read_csv('from_scratch/datasets/data/adults/X_train.csv').to_numpy()
+        df = np.delete(df, 2, 1)
+        return df
+    
+    
+    def y_train():
+        df = pd.read_csv('from_scratch/datasets/data/adults/y_train.csv').to_numpy()
+        return df
+    
+    def X_test():
+        df = pd.read_csv('from_scratch/datasets/data/adults/X_test.csv').to_numpy()
+        df = np.delete(df, 2, 1)
+        return df
+   
+    def y_test():
+        df = pd.read_csv('from_scratch/datasets/data/adults/y_test.csv').to_numpy()
+        return df
     
