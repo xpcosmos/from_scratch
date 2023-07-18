@@ -4,7 +4,7 @@ import numpy as np
 
 class adults_dataset:
 
-    
+    @staticmethod
     def load():
         X_train = pd.read_csv('from_scratch/datasets/data/adults/X_train.csv').to_numpy()
         X_train = np.delete(X_train, 2, 1)
