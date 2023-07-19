@@ -11,4 +11,21 @@ class KMeans:
       self.centroids = []
       
     
-    def predict(self, X)
+    def predict(self, X):
+        self.X = X
+        self.num_samples, self.num_features = X.shape
+        # inicialização de centroides é baseada em samples aleatórios de X
+        
+        # Atualização de centroids
+        #   Armazenar antigo centroid
+        
+        #   Extrair centroids
+        
+        # Checar se centroid convergem
+    
+    # Funções utilizadas: 
+    #   - Distancia euclidiana
+    #   - np.random.choice: Replace = False
+    #   - enumarate()
+    #   - np.argmin()
+    #
